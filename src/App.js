@@ -1,20 +1,13 @@
 import React from 'react';
 import './App.css';
 import Homepage from './pages/homepage/homepage.component';
+import ShopPage from './pages/shop/shop.component'
 import {Route, Switch} from 'react-router-dom';
 
 const Hats = (props) => {
   console.log(props);
   return (
     <h1>This is the hats page</h1>
-  )
-}
-
-
-const HatsID = (props) => {
-  console.log(props);
-  return (
-    <h1>This is the individual hat page : {`${props.match.params.id}`}</h1>
   )
 }
 
@@ -39,8 +32,8 @@ function App() {
     <div>
       <Switch>
           <Route exact path="/Fashionvilla/" component={Homepage}/>
+          <Route exact path="/Fashionvilla/shop" component={ShopPage}/>
           <Route exact path="/Fashionvilla/shop/hats" component={Hats}/>
-          <Route exact path="/Fashionvilla/shop/hats/:id" component={HatsID}/>
           <Route exact path="/Fashionvilla/shop/mens" component={Mens}/>
           <Route exact path="/Fashionvilla/shop/womens" component={Women}/>
           <Route exact path="/Fashionvilla/shop/jackets" component={Jackets}/>
