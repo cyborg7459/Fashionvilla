@@ -1,10 +1,52 @@
 import React from 'react';
 import './App.css';
 import Homepage from './pages/homepage/homepage.component';
+import {Route, Switch} from 'react-router-dom';
+
+const Hats = (props) => {
+  console.log(props);
+  return (
+    <h1>This is the hats page</h1>
+  )
+}
+
+
+const HatsID = (props) => {
+  console.log(props);
+  return (
+    <h1>This is the individual hat page : {`${props.match.params.id}`}</h1>
+  )
+}
+
+const Jackets = () => (
+  <h1>This is the jackets page</h1>
+)
+
+const Mens = () => (
+  <h1>This is the men's section</h1>
+)
+
+const Women = (props) => (
+  <h1>This is the women's section</h1>
+)
+
+const Sneakers = () => (
+  <h1>This is the sneakers page</h1>
+)
 
 function App() {
   return (
-    <Homepage/>
+    <div>
+      <Switch>
+          <Route exact path="/Fashionvilla/" component={Homepage}/>
+          <Route exact path="/Fashionvilla/shop/hats" component={Hats}/>
+          <Route exact path="/Fashionvilla/shop/hats/:id" component={HatsID}/>
+          <Route exact path="/Fashionvilla/shop/mens" component={Mens}/>
+          <Route exact path="/Fashionvilla/shop/womens" component={Women}/>
+          <Route exact path="/Fashionvilla/shop/jackets" component={Jackets}/>
+          <Route exact path="/Fashionvilla/shop/sneakers" component={Sneakers}/>
+      </Switch>
+    </div>
   );
 }
 
