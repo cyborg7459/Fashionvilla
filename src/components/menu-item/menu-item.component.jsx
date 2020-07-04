@@ -2,7 +2,7 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import './menu-item.styles.scss'
 
-const MenuItem = ({title, image, size, match, history, linkUrl}) => {
+const MenuItem = ({title, imageUrl, size, match, history, linkUrl}) => {
     let url = match.url;
     console.log(url);
     if(url[url.length-1]==='/')
@@ -14,7 +14,7 @@ const MenuItem = ({title, image, size, match, history, linkUrl}) => {
             <div 
                 className='background-image'
                 style={{
-                    backgroundImage: `url(${image})`
+                    backgroundImage: `url(${imageUrl})`
                 }} 
             />   
             <div className="content">
