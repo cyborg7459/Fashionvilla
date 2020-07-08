@@ -4,7 +4,6 @@ import './menu-item.styles.scss'
 
 const MenuItem = ({title, imageUrl, size, match, history, linkUrl}) => {
     let url = match.url;
-    console.log(url);
     if(url[url.length-1]==='/')
         url = url.slice(0,-1);
     return(
