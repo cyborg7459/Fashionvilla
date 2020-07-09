@@ -7,6 +7,7 @@ import {setCurrentUser} from './redux/user/user.actions';
 import './App.css';
 import Homepage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
+import CheckoutPage from './pages/checkout/checkout.component';
 import Header from './components/header/header-component';
 import SignupAndLogin from './pages/signup-login-page/signup-login';
 import {selectCurrentUser} from './redux/user/user.selectors';
@@ -75,6 +76,7 @@ class App extends React.Component {
             <Route exact path="/Fashionvilla/signin" render={() => 
               this.props.currentUser? (<Redirect to='/Fashionvilla'/>) : (<SignupAndLogin/>)
             }/>
+            <Route exact path="/Fashionvilla/checkout" component={CheckoutPage}/>
         </Switch>
       </div>
     );
