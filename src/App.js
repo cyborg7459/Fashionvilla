@@ -9,6 +9,7 @@ import Homepage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header-component';
 import SignupAndLogin from './pages/signup-login-page/signup-login';
+import {selectCurrentUser} from './redux/user/user.selectors';
 
 const Hats = (props) => {
   console.log(props);
@@ -81,7 +82,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  currentUser : state.user.currentUser
+  currentUser : selectCurrentUser(state)
 })
 
 const mapDispatchToProps = dispatch => ({
