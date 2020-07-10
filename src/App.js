@@ -1,39 +1,17 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {Route, Switch, Redirect} from 'react-router-dom';
-import {auth, createUserProfileDocument} from './firebase/firebase.utils';
-import {setCurrentUser} from './redux/user/user.actions';
+import React from 'react';  // All the functionalities like class componenet and Render methods come with this
+import {connect} from 'react-redux';  // Function is to pass in redux state as props to components and DOM events on components as actions to state
+import {Route, Switch, Redirect} from 'react-router-dom'; // All 3 have diffrent important functions in routing
 
-import './App.css';
+import './App.css';   // Importing the CSS file
+
 import Homepage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import CheckoutPage from './pages/checkout/checkout.component';
 import Header from './components/header/header-component';
 import SignupAndLogin from './pages/signup-login-page/signup-login';
-import {selectCurrentUser} from './redux/user/user.selectors';
-
-const Hats = (props) => {
-  console.log(props);
-  return (
-    <h1>This is the hats page</h1>
-  )
-}
-
-const Jackets = () => (
-  <h1>This is the jackets page</h1>
-)
-
-const Mens = () => (
-  <h1>This is the men's section</h1>
-)
-
-const Women = (props) => (
-  <h1>This is the women's section</h1>
-)
-
-const Sneakers = () => (
-  <h1>This is the sneakers page</h1>
-)
+import {selectCurrentUser} from './redux/user/user.selectors';  // Importing selector from the user selectors file
+import {auth, createUserProfileDocument} from './firebase/firebase.utils';
+import {setCurrentUser} from './redux/user/user.actions';   // Redux action imported to be used later
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -65,14 +43,9 @@ class App extends React.Component {
     return (
       <div>
         <Header/>
-        <Switch>
+        <Switch>  
             <Route exact path="/Fashionvilla/" component={Homepage}/>
-            <Route exact path="/Fashionvilla/shop" component={ShopPage}/>
-            <Route exact path="/Fashionvilla/shop/hats" component={Hats}/>
-            <Route exact path="/Fashionvilla/shop/mens" component={Mens}/>
-            <Route exact path="/Fashionvilla/shop/womens" component={Women}/>
-            <Route exact path="/Fashionvilla/shop/jackets" component={Jackets}/>
-            <Route exact path="/Fashionvilla/shop/sneakers" component={Sneakers}/>
+            <Route path="/Fashionvilla/shop" component={ShopPage}/>
             <Route exact path="/Fashionvilla/signin" render={() => 
               this.props.currentUser? (<Redirect to='/Fashionvilla'/>) : (<SignupAndLogin/>)
             }/>
@@ -83,15 +56,21 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  currentUser : selectCurrentUser(state)
+const mapStateToProps = state => ({   // This is one of the 4 parameters to be passed in connect function, and is used to call in state elements as props 
+  currentUser : selectCurrentUser(state)    // Defining that the currentUser in App.js would refer to whatever is returned by selectCurrentUser(state) which is a selector, and returns the currentUser from the redux user state
 })
 
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
+const mapDispatchToProps = dispatch => ({   // Second of the 4 parameters, which passes DOM events as actions to the redux reducers
+  setCurrentUser: user => dispatch(setCurrentUser(user))  // Specifying that when setCurrentUser is called on user in App.js, it would dispatch the setCurrentUser function on user in the redux ations
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(App);
+
+// JSX Part explanation :-
+// 1) Switch :  Ensures that in case multiple targets match the given Route, only the first one is rendered rather than all
+// 2) exact : Makes sure that a component is rendered only when the exact path is matched 
+// 3) component : The component to render when that path is opened 
+// 4) Redirect : Used to specify where to redirect the user in case it is needed to redirect somewhere
