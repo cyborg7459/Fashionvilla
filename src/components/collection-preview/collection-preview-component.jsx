@@ -1,12 +1,12 @@
 import React from 'react';
-import './collection-preview-styles.scss';
+import {CollectionPreviewContainer, Title, Preview} from './collection-preview.styles';
 import {Link, withRouter} from 'react-router-dom';
 import CollectionItem from '../collection-item/collection-item-component'
 
 const CollectionPreview = ({title, items, match, routeName}) => (
-    <div className='collection-preview'>
-        <h1 className='title'><Link to={`${match.url}/${routeName}`}>{title.toUpperCase()}</Link></h1>
-        <div className='preview'>
+    <CollectionPreviewContainer>
+        <Title><Link to={`${match.url}/${routeName}`}>{title.toUpperCase()}</Link></Title>
+        <Preview>
             {
                 items
                 .slice(0,4)
@@ -14,8 +14,8 @@ const CollectionPreview = ({title, items, match, routeName}) => (
                     <CollectionItem key={item.id} item={item} />
                 ))
             }
-        </div>
-    </div>
+        </Preview>
+    </CollectionPreviewContainer>
 )
 
 export default withRouter(CollectionPreview);
