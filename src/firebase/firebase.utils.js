@@ -3,7 +3,7 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const config = {
-    apiKey: "AIzaSyBrxrZ1Sx69CGy8PnsXGni3MA5XLupG15M",
+  apiKey: "AIzaSyBrxrZ1Sx69CGy8PnsXGni3MA5XLupG15M",
     authDomain: "fashionvilla-19183.firebaseapp.com",
     databaseURL: "https://fashionvilla-19183.firebaseio.com",
     projectId: "fashionvilla-19183",
@@ -17,7 +17,9 @@ firebase.initializeApp(config);
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
+
   const userRef = firestore.doc(`users/${userAuth.uid}`);
+
   const snapShot = await userRef.get();
 
   if (!snapShot.exists) {

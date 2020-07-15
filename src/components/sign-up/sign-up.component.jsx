@@ -20,6 +20,7 @@ class SignUp extends React.Component {
   }
 
   handleSubmit = async event => {
+    alert("Hello")
     event.preventDefault();
 
     const { displayName, email, password, confirmPassword } = this.state;
@@ -48,11 +49,10 @@ class SignUp extends React.Component {
     }
   };
 
-  handleChange = event => {
+  handleChange = ((event) => {
     const { name, value } = event.target;
-
     this.setState({ [name]: value });
-  };
+    })
 
   render() {
     const { displayName, email, password, confirmPassword } = this.state;
@@ -60,7 +60,7 @@ class SignUp extends React.Component {
       <div className='sign-up'>
         <h2 className='title'>I do not have a account</h2>
         <span>Sign up with your email and password</span>
-        <form className='sign-up-form' onSubmit={this.handleSubmit}>
+        <form className='sign-up-form'>
           <Input
             type='text'
             name='displayName'
@@ -93,7 +93,7 @@ class SignUp extends React.Component {
             label='Confirm Password'
             required
           />
-          <CustomButton type='submit'>SIGN UP</CustomButton>
+          <CustomButton type='submit' onClick={this.handleSubmit}>SIGN UP</CustomButton>
         </form>
       </div>
     );

@@ -6,7 +6,7 @@ const Input = ({handleChange, label, ...other}) => (
         <FormInputContainer onChange={handleChange} {...other} />
         {
             label?
-            (<FormInputLabel>
+            (<FormInputLabel className="form-input-label">
                 {label}
             </FormInputLabel>) : null
         }
