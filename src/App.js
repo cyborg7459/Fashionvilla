@@ -57,7 +57,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({   // This is one of the 4 parameters to be passed in connect function, and is used to call in state elements as props 
-  currentUser : selectCurrentUser(state)    // Defining that the currentUser in App.js would refer to whatever is returned by selectCurrentUser(state) which is a selector, and returns the currentUser from the redux user state
+  currentUser : selectCurrentUser(state),    // Defining that the currentUser in App.js would refer to whatever is returned by selectCurrentUser(state) which is a selector, and returns the currentUser from the redux user state
 })
 
 const mapDispatchToProps = dispatch => ({   // Second of the 4 parameters, which passes DOM events as actions to the redux reducers

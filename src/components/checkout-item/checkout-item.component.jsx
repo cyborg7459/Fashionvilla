@@ -21,10 +21,10 @@ const CheckoutItem = ({cartItem, removeItem, removeSingleItem, addItem}) => {
     </CheckoutItemContainer>
 )}
 
-const mapDispatchToPRops = dispatch => ({
+const mapDispatchToProps = dispatch => ({
     removeItem: item => dispatch(removeItemFromCart(item)),
     addItem: item => dispatch(addItem(item)),
     removeSingleItem : item => dispatch(removeSingleItem(item))
 })
 
-export default connect(null,mapDispatchToPRops)(CheckoutItem);
+export default connect(null,mapDispatchToProps)(CheckoutItem);
